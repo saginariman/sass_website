@@ -1,0 +1,92 @@
+// Comment
+@import "./variables.scss";
+@import "./mixins.scss";
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+@include link(tomato, red, blue, green);
+.header { 
+    @include link(silver, red, blue, green) {
+        background: #000;
+
+        &:visited {
+            color: red;
+        }
+    }
+}
+
+body {
+    // background-color: tomato;
+    color: black; 
+}
+
+#grid {
+    float: left;
+    width: 100%;
+
+    > div { //grid>div {}
+        float:left;
+        background-color: tomato;
+        @include grid(4, 2%);
+    }
+}
+
+@for $i from 24 to 29 {
+    .#{$someVar}-#{$i} {
+        width: 50px + $i;
+        height: 50px + $i;
+    }
+}
+.block:not(.first) {
+    @include padd(blue, 20px 40px 30px 50px);
+    background: $bgColor;
+    height: 200px;
+    margin-bottom: 20px;
+    width: $blockWidth;
+    border: $border;
+}
+
+#central_block {
+    padding: 30px;
+
+    ul {
+        border: 1px solid tomato;
+        list-style: none;
+        display:inline-block;
+
+        li {
+            background-color: black;
+            color: white; 
+            float: left;
+            width: (100% / 4);
+            // margin-right: 10px;
+
+            a {
+                @include font($fontW: bold, $color: blue);
+                // color: blue;
+                transition: 1s;
+                &:hover {
+                    color: tomato;
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        a {
+            @include font($fontW: light);
+        }
+    }
+}
+
+.first {
+    background: $bgColor;
+    height: 100px;
+    margin-bottom: 20px;
+    border: $border;
+    width: $blockWidth;
+}
+

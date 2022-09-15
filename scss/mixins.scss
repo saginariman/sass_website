@@ -1,0 +1,47 @@
+@mixin link($link, $hover, $active, $visited) {
+    a {
+        color: $link;
+    
+        &:hover {
+            color: lighten($link, 20%);
+        }
+    
+        &:active {
+            color: active;
+        }
+    
+        @content;
+    }
+}
+
+@mixin font ($color: red, $fontW: bold) {
+    font-size: $mainFontSize;
+    font-weight: $fontW;
+    font-family: Arial, Helvetica, sans-serif;
+    color: $color;
+}
+
+@mixin padd ($color, $padd...) {
+    padding: $padd;
+    color: $color;
+}
+
+@mixin grid($cols, $margin) {
+    float: left;
+    background-color: #ce3d3d;
+    margin-bottom: $margin;
+    height: 150px;
+
+    @if($cols >= 5){
+        width: 100%;
+        margin-right: 0;
+    }
+    @else {
+        width: ((100% - (($cols - 1) * $margin)) / $cols);
+        margin-right: $margin;
+    }
+
+    &:nth-child(#{$cols}n) {
+        margin-right: 0;
+    }
+}
